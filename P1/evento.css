@@ -1,0 +1,46 @@
+/* Estilos para la descripción de un evento concreto*/
+body{
+    background-image: url("images/playstation-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;  
+}
+article{
+    width: 89%;
+    display: inline-block;
+}
+
+article p{
+    display: inline;
+    text-emphasis: bold;
+    font-size: 1.2em;
+}
+
+article div{
+    float: right;
+    width: 15%;
+    margin-left: 0.5%;
+}
+
+#santa-monica-logo{
+    width: 100%;
+    margin-top: 15%;
+}
+
+#naughty-dog-logo{
+    width: 80%;
+}
+
+.pie img{
+    filter: invert(100%) sepia(0%) saturate(7484%) hue-rotate(246deg) brightness(108%) contrast(106%);
+}
+
+aside a{
+    text-decoration: none;
+    color: white;
+}
+
+aside img{
+    margin-top: 5%;
+    width: 20%;
+}

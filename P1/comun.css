@@ -1,0 +1,49 @@
+/* Estilos para los elementos comunes (cabecera, aside y pie de página */
+.cabecera{
+    overflow: auto;
+    padding-top: 0%;
+    padding-bottom: 1%;
+}
+
+.cabecera h1{
+    text-align: center;
+}
+
+.cabecera img{
+    float: left;
+    width: 5%;
+    margin-left: 2%;
+}
+
+.cabecera nav{
+    text-align: center;
+}
+
+.cabecera p{
+    display: inline;
+    padding: 1%;
+}
+
+.pie{
+    text-align: center;
+    margin-top: 2%;
+}
+
+aside {
+    float: left;
+    width: 10%;
+}
+
+.pie img{
+    display: inline;
+    width: 0.75%;
+}
+
+.pie p{
+    display: inline;
+}
+
+aside li{
+    padding: 10%;
+    list-style-type: circle;
+}
