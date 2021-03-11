@@ -29,6 +29,10 @@ article header{
     font-family: "DotGothic16", sans-serif;
 }
 
+img:hover{
+    transform: scale(1.1);
+}
+
 #santa-monica-logo{
     width: 100%;
     margin-top: 15%;
