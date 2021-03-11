@@ -3,10 +3,12 @@
     overflow: auto;
     padding-top: 0%;
     padding-bottom: 1%;
+    font-family: "Ubuntu Mono", sans-serif;
 }
 
 .cabecera h1{
     text-align: center;
+    font-size: 3em;
 }
 
 .cabecera img{
@@ -17,6 +19,7 @@
 
 .cabecera nav{
     text-align: center;
+    margin-left: 7%;
 }
 
 .cabecera p{
@@ -32,6 +35,9 @@
 aside {
     float: left;
     width: 10%;
+    font-family: "Ubuntu Mono", sans-serif;
+    font-size: 1.2vw;
+    margin-right: 1%;
 }
 
 .pie img{
@@ -46,4 +52,13 @@ aside {
 aside li{
     padding: 10%;
     list-style-type: circle;
+}
+
+aside ul{
+    margin-left: 1%;
+    padding-left: 7%;
+}
+
+.pie img{
+    filter: invert(100%) sepia(0%) saturate(7484%) hue-rotate(246deg) brightness(108%) contrast(106%);
 }

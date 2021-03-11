@@ -6,20 +6,27 @@ body{
     color: white;  
 }
 article{
-    width: 89%;
+    width: 88%;
     display: inline-block;
+    margin-right: 1%;
 }
 
 article p{
     display: inline;
     text-emphasis: bold;
-    font-size: 1.2em;
+    font-size: 0.8em;
+    font-family:"Press Start 2P", sans-serif;
+    line-height: 25px;
 }
 
 article div{
     float: right;
     width: 15%;
     margin-left: 0.5%;
+}
+
+article header{
+    font-family: "DotGothic16", sans-serif;
 }
 
 #santa-monica-logo{
@@ -29,10 +36,6 @@ article div{
 
 #naughty-dog-logo{
     width: 80%;
-}
-
-.pie img{
-    filter: invert(100%) sepia(0%) saturate(7484%) hue-rotate(246deg) brightness(108%) contrast(106%);
 }
 
 aside a{

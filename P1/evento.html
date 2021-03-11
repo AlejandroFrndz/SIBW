@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!--Establece metadatos de la web y la información mostrada en la pestaña del navegador-->
     <head>
         <meta charset="utf-8" />
         <meta name="author" content="Alejandrof" />
@@ -7,9 +8,12 @@
         <link rel="icon" href="images/E3_Logo.png" />
         <link rel="stylesheet" href="comun.css" />
         <link rel="stylesheet" href="evento.css" />
+        <!--Importa las fuentes de google a usar para estilizar los textos-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P|Ubuntu Mono|DotGothic16"/>
     </head>
 
     <body>
+        <!--La cabecera contiene el logo, el nombre de la web y el menú-->
         <header class="cabecera">
             <a href="portada.html">
                 <img src="images/E3_Logo.png" alt="Logo E3" />
@@ -22,10 +26,13 @@
             </nav>
         </header>
 
+        <!--Contiene el texto del evento (título, descripción) y las imágenes-->
         <article>
-            <h1>Playstation Press Conference</h1>
-            <h2>Sony Corporation</h2>
-            <h3>Monday, June 11 - 9:00pm PDT</h3>
+            <header>
+                <h1>Playstation Press Conference</h1>
+                <h2>Sony Corporation</h2>
+                <h3>Monday, June 11 - 9:00pm PDT</h3>
+            </header>
             <div>
                 <a href="https://www.naughtydog.com/"><img src="images/naughtydog_logo.png" alt="Naughty Dog logo" id="naughty-dog-logo"/></a>
                 <a href="https://sms.playstation.com/"><img src="images/santa-monica-logo.png" alt="Satna Monica Studio logo" id="santa-monica-logo"/></a>
@@ -35,6 +42,7 @@
             </p>
         </article>
 
+        <!--Menú lateral. Se añade un nuevo elemento a la lista que enlaza con la web del organizador-->
         <aside>
             <ul>
                 <li>Schedule</li>
@@ -42,17 +50,19 @@
                 <li>Latests News</li>
                 <li>Customer Support</li>
                 <li>FAQ</li>
-                <a href="https://www.playstation.com"><li>Visit Playstation's Website</li></a>
+                <a href="https://www.playstation.com/en-us"><li>Visit Playstation's Website</li></a>
             </ul>
+            <!--También se añaden los botones sociales y el de impresión-->
             <a href="https://www.facebook.com/playstation/"><img src="images/facebook-logo.png" alt="Facebook Logo" /></a>
             <a href="https://twitter.com/playstation"><img src="images/twitter-logo.png" alt="Twitter Logo" /></a>
             <a href="https://www.instagram.com/playstation/"><img src="images/instagram-logo.png" alt="Instagram Logo" /></a>
             <a href="imprimir.html"><img src="images/print-logo.png" alt="Print" /></a>
         </aside>
 
+        <!--Pie de la página. Contiene información de Copyright-->
         <footer class="pie">
             <img src="images/copyright.png" alt="Copyright" id="copyright-logo"/>
-            <p id="copyright-text">2021 - Alejandrof <br> While using E3FromHome, you agree to have read and accepted our terms of use, cookie and privacy policy.</p>
+            <p id="copyright-text">2021 - AlejandroFrndz <br> While using E3FromHome, you agree to have read and accepted our terms of use, cookie and privacy policy.</p>
         </footer>
     </body>
 </html>
