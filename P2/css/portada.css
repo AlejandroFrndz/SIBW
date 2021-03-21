@@ -1,6 +1,6 @@
 /* Estilos para los eventos de la portada*/
 body{
-    background-image: url("images/main-background.png");
+    background-image: url("../images/main-background.png");
     background-repeat: no-repeat;
     background-size: cover;
     color: white;

@@ -1,6 +1,6 @@
 /* Estilos para la descripción de un evento concreto*/
 body{
-    background-image: url("images/playstation-background.jpg");
+    background-image: url("../images/playstation-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     color: white;  
@@ -78,10 +78,13 @@ aside img{
     margin: 0.8% 1% 0.8% 1%;
 }
 
+.commentBody{
+    line-height: 25px;
+}
+
 #commentSection{
     margin-left: 182px;
-    font-family: "DotGothic16", sans-serif;
-    font-weight: bold;
+    font-family: sans-serif;
     display: none;
 }
 
@@ -160,4 +163,10 @@ aside img{
 #email{
     width: 300px;
     padding: 0.4%;
+}
+
+#invalidEmail{
+    display: inline;
+    font-family: sans-serif;
+    color: #C20606;
 }
