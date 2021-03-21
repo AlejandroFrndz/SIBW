@@ -1,0 +1,72 @@
+/* Estilos para los eventos de la portada*/
+body{
+    background-image: url("images/main-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+header img:hover{
+    transform: scale(1.1);
+}
+
+.evento{
+    width: 30%;
+    text-align: center;
+    padding: 1%;
+    display: inline-block;
+}
+
+.evento h2{
+    margin-top: 0%;
+    visibility: hidden;
+}
+
+.evento img{
+    margin-bottom: 0%;
+    width: 70%;
+    height: 70%;
+}
+
+.evento img:hover{
+    transform: scale(1.2);
+}
+
+.eventsGrid{
+    width: 89%;
+    display: inline-block;
+}
+
+.evento a{
+    color: white;
+    text-decoration: solid;
+}
+
+#PlayStation{
+    filter: invert(11%) sepia(84%) saturate(7489%) hue-rotate(242deg) brightness(53%) contrast(134%);
+}
+
+#Xbox{
+    filter: brightness(0) saturate(100%) invert(19%) sepia(42%) saturate(4512%) hue-rotate(101deg) brightness(98%) contrast(105%);
+}
+
+#Bethesda{
+    filter: brightness(0) saturate(100%);
+}
+
+#Ubisoft{
+    filter: invert(100%) sepia(0%) saturate(7484%) hue-rotate(181deg) brightness(109%) contrast(100%);
+}
+
+#Devolver{
+    margin-bottom: 15%;
+}
+
+#Nintendo{
+    width: 100%;
+    margin-bottom: 20%;
+}
+
+.pie{
+    margin-top: 0%;
+}

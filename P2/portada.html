@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <!--Establece metadatos de la web y la información mostrada en la pestaña del navegador-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Alejandrof" />
+        <title>E3 From Home</title>
+        <link rel="icon" href="images/E3_Logo.png" />
+        <link rel="stylesheet" href="comun.css" />
+        <link rel="stylesheet" href="portada.css" />
+        <!--Importa las fuentes de google a usar para estilizar los textos-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P|Ubuntu Mono|DotGothic16"/>
+    </head>
+
+    <body>
+        <!--La cabecera contiene el logo, el nombre de la web y el menú-->
+        <header class="cabecera">
+            <a href="portada.html">
+                <img src="images/E3_Logo.png" alt="Logo E3" />
+            <a/>
+            <h1>E3 From Home</h1>
+            <nav>
+                <p>About Us</p>
+                <p>Contact</p>
+                <p>Privacy Policy</p>
+            </nav>
+        </header>
+        
+        <!--Sección principal de la página. Contiene las imágenes de los eventos con enlace-->
+        <section class="eventsGrid">
+            <div class="evento">
+                <a href="evento.html"><img src="images/play-logo.png" alt="Logo PlayStation" id="PlayStation"/></a>
+                <h2>Sony</h2>
+            </div>
+            <div class="evento">
+                <a href="https://www.xbox.com/"><img src="images/xbox-logo.png" alt="Logo Xbox" id="Xbox"/></a>
+                <h2>Microsoft</h2>
+            </div>
+            <div class="evento">
+                <a href="https://www.devolverdigital.com/"><img src="images/devolver-logo.png" alt="Logo Devolver Digital" id="Devolver"/></a>
+                <h2>Devolver</h2>
+            </div>
+            <div class="evento">
+                <a href="https://bethesda.net/"><img src="images/bethesda-logo.png" alt="Logo Bethesda" id="Bethesda"/></a>
+                <h2>Bethesda</h2>
+            </div>
+            <div class="evento">
+                <a href="https://www.ubisoft.com/en-us/"><img src="images/ubisoft-logo.png" alt="Logo Ubisoft" id="Ubisoft"/></a>
+                <h2>Ubisoft</h2>
+            </div>
+            <div class="evento">
+                <a href="https://www.nintendo.com/"><img src="images/nintendo-logo.png" alt="Logo Nintendo" id="Nintendo"/></a>
+                <h2>Nintendo</h2>
+            </div>
+        </section>
+
+        <!--Menú lateral con una lista de varias opciones-->
+        <aside>
+            <ul>
+                <li>Schedule</li>
+                <li>Buy Tickets</li>
+                <li>Latests News</li>
+                <li>Customer Support</li>
+                <li>FAQ</li>
+            </ul>
+        </aside>
+
+        <!--Pie de la página. Contiene información de Copyright-->
+        <footer class="pie">
+            <img src="images/copyright.png" alt="Copyright" id="copyright-logo"/>
+            <p id="copyright-text">2021 - AlejandroFrndz <br> While using E3FromHome, you agree to have read and accepted our terms of use, cookie and privacy policy.</p>
+        </footer>
+    </body>
+</html>
