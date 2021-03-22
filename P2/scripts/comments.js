@@ -1,10 +1,10 @@
 window.onload = bindFunctions;
-document.getElementById("postButton").style.display = "none";
 
 function bindFunctions(){
   document.getElementById("showButton").onclick = toggleComments;
   document.getElementById("postButton").onclick = postComment;
   document.getElementById("comment").oninput = censorship;
+  document.getElementById("postButton").style.display = "none";
 }
 
 function toggleComments() {
