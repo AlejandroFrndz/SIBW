@@ -60,7 +60,7 @@
             <a href="imprimir.html"><img src="../images/print-logo.png" alt="Print" /></a>
         </aside>
 
-        <button type="button" onclick="toggleComments()" id="showButton" class="toggleBtn">Show Comments</button>
+        <button type="button" id="showButton" class="toggleBtn">Show Comments</button>
 
         <!--Comentarios-->
         <div id="commentSection">
@@ -146,8 +146,8 @@
                 <label for="email" class="formElements">Email</label>
                 <input type="text" id="email" name="email" class="formElements"/>
                 <p id="invalidEmail"></p>
-                <textarea id="comment" name="comment" class="formElements" placeholder="Type your comment here..." oninput="censorship()"></textarea>
-                <button type="button" onclick="postComment()">Post Comment</button> 
+                <textarea id="comment" name="comment" class="formElements" placeholder="Type your comment here..."></textarea>
+                <button type="button" id="postButton">Post Comment</button> 
             </form>
         </div>
 

@@ -1,3 +1,12 @@
+window.onload = bindFunctions;
+document.getElementById("postButton").style.display = "none";
+
+function bindFunctions(){
+  document.getElementById("showButton").onclick = toggleComments;
+  document.getElementById("postButton").onclick = postComment;
+  document.getElementById("comment").oninput = censorship;
+}
+
 function toggleComments() {
   var com = document.getElementById("commentSection");
   var show = document.getElementById("showButton");
@@ -76,6 +85,16 @@ function postComment(){
 }
 
 function censorship(){
+  var texarea = document.getElementById("comment");
+  var button = document.getElementById("postButton");
+
+  if(texarea.value === ""){
+    button.style.display = "none";
+  }
+  else{
+    button.style.display = "block";
+  }
+
   var forbidden = ["xbox", "microsoft", "gamepass", "bill gates", "azure", "windows", "skype", "github", "kinect", "series x"];
 
   forbidden.forEach(censor)
