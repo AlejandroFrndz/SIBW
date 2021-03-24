@@ -33,6 +33,7 @@ function toggleComments() {
 function postComment(){
   var article = document.getElementById("feed");
   var section = document.createElement("section");
+  var button = document.getElementById("postButton");
 
   var name = document.getElementById("name");
   var email = document.getElementById("email");
@@ -92,6 +93,7 @@ function postComment(){
     section.setAttribute('class','postedComment');
     article.appendChild(section);
     comment.value = "";
+    button.style.display = "none";
   }
 
 }
