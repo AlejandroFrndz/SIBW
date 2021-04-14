@@ -1,0 +1,69 @@
+{% extends "/html/base.html.twig" %}
+
+{% block title %}
+- {{event.title|capitalize}}
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href={{"templates/css/#{event.title|lower}.css"}} />
+<script src="templates/scripts/comments.js" defer></script>
+{% endblock %}
+
+{% block main %}
+<article id="eventText">
+    <header>
+        <h1>{{event.title|capitalize}} Press Conference</h1>
+        <h1>{{"templates/css/#{event.title|lower}.css"}}</h1>
+        <h2>{{event.organizer|title}}</h2>
+        <h3>{{event.date}}</h3>
+    </header>
+    <div>
+        {% for textImg in textImgs %}
+        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" /></a>
+        {% endfor %}
+    </div>
+    <p>
+        {{event.description}}
+    </p>
+</article>
+
+{{ parent() }}
+
+<button type="button" id="showButton" class="toggleBtn">Show Comments</button>
+
+<!--Comentarios-->
+<div id="commentSection">
+    <article id="feed">
+        <!--Comentarios Predeterminados-->
+        {% for comment in comments %}
+        <section class="postedComment">
+            <p>{{comment.author}}</p>
+            <p>{{comment.date}}</p>
+            <p class="commentBody">{{comment.body}}</p>
+        </section>
+        {% endfor %}
+    </article>
+
+    <!--Form para la introducción de nuevos comentarios-->
+    <form id="commentInput">
+        <label for="name" class="formElements">Name</label>
+        <input type="text" id="name" name="name" class="formElements"/>
+        <label for="email" class="formElements">Email</label>
+        <input type="text" id="email" name="email" class="formElements"/>
+        <p id="invalidEmail"></p>
+        <textarea id="comment" name="comment" class="formElements" placeholder="Type your comment here..."></textarea>
+        <button type="button" id="postButton">Post Comment</button> 
+    </form>
+</div>
+{% endblock %}
+
+{% block asideList %}
+<a href={{event.href}}><li>Visit {{event.title|capitalize}}'s Website</li></a>
+{% endblock %}
+
+{% block asideElements %}
+<a href={{"https://www.facebook.com/#{event.title|lower}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
+<a href={{"https://twitter.com/#{event.title|lower}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
+<a href={{"https://www.instagram.com/#{event.title|lower}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
+<a href="/imprimir.php"><img src="templates/images/print-logo.png" alt="Print" /></a>
+{% endblock %}

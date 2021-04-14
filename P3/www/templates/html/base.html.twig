@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <!--Establece metadatos de la web y la información mostrada en la pestaña del navegador-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Alejandrof" />
+        <title>E3 From Home {% block title %}{% endblock %}</title>
+        <link rel="icon" href= "templates/images/E3_Logo.png" />
+        <link rel="stylesheet" href="templates/css/comun.css" />
+        {% block head %}
+        {% endblock %}
+        <!--Importa las fuentes de google a usar para estilizar los textos-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P|Ubuntu Mono|DotGothic16"/>
+    </head>
+
+    <body>
+        <!--La cabecera contiene el logo, el nombre de la web y el menú-->
+        <header class="cabecera">
+            <a href="index.php">
+                <img src="templates/images/E3_Logo.png" alt="Logo E3" />
+            <a/>
+            <h1>E3 From Home</h1>
+            <nav>
+                <p>About Us</p>
+                <p>Contact</p>
+                <p>Privacy Policy</p>
+            </nav>
+        </header>
+
+        {% block main %}
+        
+
+        <!--Menú lateral con una lista de varias opciones-->
+        <aside>
+            <ul>
+                <li>Schedule</li>
+                <li>Buy Tickets</li>
+                <li>Latests News</li>
+                <li>Customer Support</li>
+                <li>FAQ</li>
+                {% block asideList %}
+                {% endblock %}
+            </ul>
+            {% block asideElements %}
+            {% endblock %}
+        </aside>
+
+        {% endblock %}
+
+        <!--Pie de la página. Contiene información de Copyright-->
+        <footer class="pie">
+            <img src="templates/images/copyright.png" alt="Copyright" id="copyright-logo"/>
+            <p id="copyright-text">2021 - AlejandroFrndz <br> While using E3FromHome, you agree to have read and accepted our terms of use, cookie and privacy policy.</p>
+        </footer>
+    </body>
+</html>
