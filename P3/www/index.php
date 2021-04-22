@@ -4,5 +4,11 @@
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig = new \Twig\Environment($loader);
 
-    echo $twig->render('/html/portada.html.twig',[]);
+    include("BD.php");
+
+    $db = new BD();
+
+    $imgs = $db->getImagenesPortada();
+
+    echo $twig->render('/html/portada.html.twig',['imgs' => $imgs]);
 ?>

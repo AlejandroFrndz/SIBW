@@ -1,21 +1,20 @@
 {% extends "/html/base.html.twig" %}
 
 {% block title %}
-- {{event.title|capitalize}}
+- {{event.titulo|capitalize}}
 {% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href={{"templates/css/#{event.title|lower}.css"}} />
+<link rel="stylesheet" href={{"templates/css/#{event.titulo|lower}.css"}} />
 <script src="templates/scripts/comments.js" defer></script>
 {% endblock %}
 
 {% block main %}
 <article id="eventText">
     <header>
-        <h1>{{event.title|capitalize}} Press Conference</h1>
-        <h1>{{"templates/css/#{event.title|lower}.css"}}</h1>
-        <h2>{{event.organizer|title}}</h2>
-        <h3>{{event.date}}</h3>
+        <h1>{{event.titulo|capitalize}} Press Conference</h1>
+        <h2>{{event.organizador|title}}</h2>
+        <h3>{{event.fecha}}</h3>
     </header>
     <div>
         {% for textImg in textImgs %}
@@ -23,7 +22,7 @@
         {% endfor %}
     </div>
     <p>
-        {{event.description}}
+        {{event.descripcion}}
     </p>
 </article>
 
@@ -37,9 +36,9 @@
         <!--Comentarios Predeterminados-->
         {% for comment in comments %}
         <section class="postedComment">
-            <p>{{comment.author}}</p>
-            <p>{{comment.date}}</p>
-            <p class="commentBody">{{comment.body}}</p>
+            <p>{{comment.autor}}</p>
+            <p>{{comment.fecha}}</p>
+            <p class="commentBody">{{comment.cuerpo}}</p>
         </section>
         {% endfor %}
     </article>
@@ -58,12 +57,12 @@
 {% endblock %}
 
 {% block asideList %}
-<a href={{event.href}}><li>Visit {{event.title|capitalize}}'s Website</li></a>
+<a href={{event.href}}><li>Visit {{event.titulo|capitalize}}'s Website</li></a>
 {% endblock %}
 
 {% block asideElements %}
-<a href={{"https://www.facebook.com/#{event.title|lower}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
-<a href={{"https://twitter.com/#{event.title|lower}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
-<a href={{"https://www.instagram.com/#{event.title|lower}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
-<a href="/imprimir.php"><img src="templates/images/print-logo.png" alt="Print" /></a>
+<a href={{"https://www.facebook.com/#{event.titulo|lower}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
+<a href={{"https://twitter.com/#{event.titulo|lower}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
+<a href={{"https://www.instagram.com/#{event.titulo|lower}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
+<a href={{"imprimir.php?ev=#{event.DB_idEv}"}}><img src="templates/images/print-logo.png" alt="Print" /></a>
 {% endblock %}

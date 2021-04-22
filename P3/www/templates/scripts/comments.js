@@ -76,12 +76,16 @@ function postComment(){
   var yyyy = today.getFullYear();
   var hours = today.getHours();
   var minutes = today.getMinutes();
+  var seconds = today.getSeconds();
 
   if(minutes < 10){
     minutes = '0' + minutes;
   }
+  if(seconds < 10){
+    seconds = '0' + seconds;
+  }
 
-  date = dd + '-' + mm + '-' + yyyy + '\t' + hours + ':' + minutes;
+  date = yyyy + '-' + mm + '-' + dd + '\t' + hours + ':' + minutes + ":" + seconds;
 
   //Si todo ha ido bien, se incluye una nueva sección en el html con el nuevo comentario
   if(!ilegal){

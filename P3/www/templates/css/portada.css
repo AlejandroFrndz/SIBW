@@ -15,11 +15,7 @@ header img:hover{
     text-align: center;
     padding: 1%;
     display: inline-block;
-}
-
-.evento h2{
-    margin-top: 0%;
-    visibility: hidden;
+    margin-bottom: 2%;
 }
 
 .evento img{
