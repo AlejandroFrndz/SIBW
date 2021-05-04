@@ -1,0 +1,71 @@
+{% extends "/html/base.html.twig" %}
+
+{% block title %}
+- {{event.titulo|capitalize}}
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href={{"templates/css/#{event.titulo|lower}.css"}} />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+<script src="templates/scripts/comments.js" defer></script>
+{% endblock %}
+
+{% block main %}
+<article id="eventText">
+    <header>
+        <h1>{{event.titulo|capitalize}} Press Conference</h1>
+        <h2>{{event.organizador|title}}</h2>
+        <h3>{{event.fecha}}</h3>
+    </header>
+    <div>
+        {% for textImg in textImgs %}
+        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" /></a>
+        {% endfor %}
+    </div>
+    <p>
+        {{event.descripcion}}
+    </p>
+</article>
+
+{{ parent() }}
+
+<button type="button" id="showButton" class="toggleBtn">Show Comments</button>
+
+<!--Comentarios-->
+<div id="commentSection">
+    <article id="feed">
+        <!--Comentarios Predeterminados-->
+        {% for comment in comments %}
+        <section class="postedComment">
+            {% if user.nivel >= 2 %}
+            <a class="material-icons" id="removeIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}&rmv"}}>remove_circle</a>
+            <a class="material-icons" id="editIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}"}}>edit</a>
+            {% endif %}
+            <p>{{comment.uname}}</p>
+            <p>{{comment.fecha}}</p>
+            <p class="commentBody">{{comment.cuerpo}}</p>
+        </section>
+        {% endfor %}
+    </article>
+
+    <!--Form para la introducción de nuevos comentarios-->
+    <div id="palabrasProhibidas" data-palabras-prohibidas="{{palabras|json_encode|e('html_attr')}}"></div>
+    {% if user.nivel > 0 %}
+    <form id="commentInput" action={{"evento.php?ev=#{event.DB_idEv}"}} method="post">
+        <textarea id="comment" name="comment" class="formElements" placeholder="Type your comment here..."></textarea>
+        <button type="submit" id="postButton">Post Comment</button> 
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block asideList %}
+<a href={{event.href}}><li>Visit {{event.titulo|capitalize}}'s Website</li></a>
+{% endblock %}
+
+{% block asideElements %}
+<a href={{"https://www.facebook.com/#{event.titulo|lower}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
+<a href={{"https://twitter.com/#{event.titulo|lower}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
+<a href={{"https://www.instagram.com/#{event.titulo|lower}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
+<a href={{"imprimir.php?ev=#{event.DB_idEv}"}}><img src="templates/images/print-logo.png" alt="Print" /></a>
+{% endblock %}

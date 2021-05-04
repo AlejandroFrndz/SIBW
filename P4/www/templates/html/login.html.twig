@@ -1,0 +1,18 @@
+{% extends "html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/login.css" />
+{% endblock %}
+
+{% block main %}
+<h1>Sing In</h1>
+<form action="login.php" method="post">
+    <label for="uname">Username:</label><p class="error">  {{errores.uname}}</p><br>
+    <input type="text" id="uname" name="uname"/><br>
+    <label for="pass">Password:</label><p class="error">  {{errores.pass}}</p><br>
+    <input type="password" id="pass" name="pass"/><br>
+    <div class="clearfix">
+        <button type="button" class="cancelbtn" onclick="location.href='index.php'">Cancel</button>
+        <button type="submit" class="logbtn">Sign In</button>
+    </div>
+{% endblock %}

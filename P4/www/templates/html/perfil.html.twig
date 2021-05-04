@@ -1,0 +1,41 @@
+{% extends "html/datosBase.html.twig" %}
+
+{% block titulo %}{{user.uname|capitalize}}'s Profile{% endblock %}
+
+{% block action %}"perfil.php"{% endblock %}
+
+{% block uname %} value="{{user.uname|capitalize}}" disabled{% endblock %}
+
+{% block email %}value="{{user.email}}"{% endblock %}
+
+{% block fname %}value="{{user.nombre}}"{% endblock %}
+
+{% block sname %}value="{{user.apellido}}"{% endblock %}
+
+{% block city %}value="{{user.direccion}}"{% endblock %}
+
+{% block male %}
+    {% if user.sexo == "Male" %}
+        checked="checked"
+    {% endif %}
+{% endblock %}
+
+{% block female %}
+    {% if user.sexo == "Female" %}
+        checked="checked"
+    {% endif %}
+{% endblock %}
+
+{% block other %}
+    {% if user.sexo == "Other" %}
+        checked="checked"
+    {% endif %}
+{% endblock %}
+
+{% block country %}
+<option value="{{user.pais}}">{{user.pais}}</option>
+{% endblock %}
+
+{% block bday %}"{{user.fNac}}"{% endblock %}
+
+{% block textBoton %}Update{% endblock %}

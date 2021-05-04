@@ -1,0 +1,29 @@
+{% extends "/html/base.html.twig" %}
+
+{% block head %} 
+<link rel="stylesheet" href="templates/css/portada.css" />
+{% endblock %}
+
+{% block main %}
+<section class="eventsGrid">
+    {% for img in imgs %}
+    <div class="evento">
+        <a href={{img.href}}><img src={{img.src}} alt={{img.alt}} id="{{img.id}}" /></a>
+    </div>
+    {% endfor %}
+    <div class="evento">
+        <a href="https://www.devolverdigital.com/"><img src="templates/images/devolver-logo.png" alt="Logo Devolver Digital" id="Devolver"/></a>
+    </div>
+    <div class="evento">
+        <a href="https://bethesda.net/"><img src="templates/images/bethesda-logo.png" alt="Logo Bethesda" id="Bethesda"/></a>
+    </div>
+    <div class="evento">
+        <a href="https://www.ubisoft.com/en-us/"><img src="templates/images/ubisoft-logo.png" alt="Logo Ubisoft" id="Ubisoft"/></a>
+    </div>
+    <div class="evento">
+        <a href="https://www.nintendo.com/"><img src="templates/images/nintendo-logo.png" alt="Logo Nintendo" id="Nintendo"/></a>
+    </div>
+</section>
+
+{{ parent() }}
+{% endblock %}
