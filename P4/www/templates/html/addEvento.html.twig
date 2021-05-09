@@ -1,0 +1,30 @@
+{% extends "html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/registro.css" />
+{% endblock %}
+
+{% block main %}
+    <form action="addEvento.php" method="post" enctype="multipart/form-data">
+        <label for="titulo">Title:</label><p class="error">  {{errores.titulo}}</p><br>
+        <input type="text" id="titulo" name="titulo"/><br>
+        <label for="organizador">Organizer:</label><p class="error"> {{errores.organizador}}</p><br>
+        <input type="text" id="organizador" name="organizador"/><br>
+        <label for="href">Link to Organizer's WebPage:</label><p class="error"> {{errores.href}}</p><br>
+        <input type="text" id="href" name="href"/><br>
+        <label for="fecha">Date:</label><p class="error">  {{errores.fecha}}</p><br>
+        <input type="date" id="fecha" name="date"/>
+        <input type="time" id="time" name="time"/><br>
+        <label for="descripcion">Description:</label><p class="error">  {{errores.descripcion}}</p><br>
+        <textarea id="descripcion" name="descripcion" class="formElements" placeholder="Type event description here..."></textarea><br>
+        <label for="imagenPortada">Main Page Image:</label><p class="error">  {{errores.imagenPortada}}</p><br>
+        <input type="file" id="imagenPortada" name="imagenPortada"/><br><br>
+        <label for="imagen">Image:</label><p class="error">  {{errores.imagen}}</p><br>
+        <input type="file" id="imagen" name="imagen"/>
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn" onclick="location.href='index.php'">Cancel</button>
+            <button type="submit" class="signupbtn">Create</button>
+        </div>
+    </form>
+{% endblock %}

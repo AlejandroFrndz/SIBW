@@ -1,6 +1,6 @@
 /* Estilos para la descripción de un evento concreto*/
 body{
-    background-image: url("../images/playstation-background.jpg");
+    background-image: url("../images/generic-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     color: white;  
@@ -33,15 +33,6 @@ img:hover{
     transform: scale(1.1);
 }
 
-#santa-monica-logo{
-    width: 100%;
-    margin-top: 15%;
-}
-
-#naughty-dog-logo{
-    width: 80%;
-}
-
 aside a{
     text-decoration: none;
     color: white;
@@ -67,7 +58,7 @@ aside img{
 .postedComment{
     border: 3px solid white;
     border-radius: 6px;
-    background-color: #031e49;
+    background-color: #c80138;
     color: white;
     width: 80%;
     margin-top: 1%;
@@ -89,14 +80,14 @@ aside img{
 }
 
 #commentInput input{
-    background-color: #031e49;
+    background-color: #c80138;
     color: white;
     border: 2px solid white;
     border-radius: 6px;
 }
 
 #commentInput textarea{
-    background-color: #031e49;
+    background-color: #c80138;
     color: white;
     border: 2px solid white;
     border-radius: 6px;
@@ -118,14 +109,14 @@ aside img{
     cursor: pointer;
     background-color: white; 
     color: black; 
-    border: 2px solid #031e49;
+    border: 2px solid #c80138;
     border-radius: 6px;
     font-family:"Press Start 2P", sans-serif;
 }
 
   
 #commentSection button:hover {
-    background-color: #031e49;
+    background-color: #c80138;
     color: white;
 }
 
@@ -139,7 +130,7 @@ aside img{
     font-size: 0.8em;
     margin: 4px 2px;
     cursor: pointer;
-    background-color: #031e49;
+    background-color: #c80138;
     color: white; 
     border: 1px solid white;
     margin-left: 85%;
@@ -178,4 +169,8 @@ aside img{
 
 #editIcon{
     color: white;
+}
+
+.galeria{
+    width: 100%;
 }

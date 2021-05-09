@@ -1,0 +1,14 @@
+{% extends "html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/listaEventos.css" />
+{% endblock %}
+
+{% block main %}
+    <h1>Event List</h1>
+    <ul>
+        {% for event in events %}
+                <li><a title="Go to event" href={{"evento.php?ev=#{event.DB_idEv}"}}>{{event.titulo|capitalize}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

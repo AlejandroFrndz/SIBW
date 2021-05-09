@@ -1,4 +1,4 @@
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=url] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -9,6 +9,18 @@ input[type=text], input[type=password] {
 
 input[type=radio], input[type=date], #country{
   margin: 5px 0 22px 0;
+}
+
+textarea{
+  border: none;
+  padding: 0.5%;
+  font-size: 1em;
+  width: 98%;
+  height: 236px;
+  resize: none;
+  display: block;
+  background: #f1f1f1;
+  line-height: 20px;
 }
 
 
@@ -67,4 +79,30 @@ form button:hover {
 
 #usersBtn{
   visibility: hidden;
+}
+
+#actions{
+  margin-bottom: 40px;
+}
+
+#actions a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+#actions a:link {
+  color: #020d9e;
+}
+
+#actions a:visited {
+  color: #020d9e;
+}
+
+#actions a:hover {
+  border-bottom: 1px solid;
+}
+
+#actions a:active {
+  color: #010653;
 }

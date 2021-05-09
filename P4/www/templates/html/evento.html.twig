@@ -5,21 +5,24 @@
 {% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href={{"templates/css/#{event.titulo|lower}.css"}} />
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+{% if event.titulo|capitalize == "Playstation" or event.titulo|capitalize == "Xbox" %}
+    <link rel="stylesheet" href={{"templates/css/#{event.titulo|lower}.css"}} />
+{% else %}
+    <link rel="stylesheet" href={{"templates/css/evento.css"}} />
+{% endif %}
 <script src="templates/scripts/comments.js" defer></script>
 {% endblock %}
 
 {% block main %}
 <article id="eventText">
     <header>
-        <h1>{{event.titulo|capitalize}} Press Conference</h1>
+        <h1>{{event.titulo|title}} Press Conference</h1>
         <h2>{{event.organizador|title}}</h2>
         <h3>{{event.fecha}}</h3>
     </header>
     <div>
         {% for textImg in textImgs %}
-        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" /></a>
+        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" class="galeria"/></a>
         {% endfor %}
     </div>
     <p>
@@ -38,8 +41,8 @@
         {% for comment in comments %}
         <section class="postedComment">
             {% if user.nivel >= 2 %}
-            <a class="material-icons" id="removeIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}&rmv"}}>remove_circle</a>
-            <a class="material-icons" id="editIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}"}}>edit</a>
+            <a class="material-icons" title="Delete" id="removeIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}&rmv"}}>remove_circle</a>
+            <a class="material-icons" title="Edit" id="editIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}"}}>edit</a>
             {% endif %}
             <p>{{comment.uname}}</p>
             <p>{{comment.fecha}}</p>

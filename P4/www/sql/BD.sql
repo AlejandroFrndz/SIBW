@@ -27,7 +27,10 @@ CREATE TABLE Usuario(
     sexo VARCHAR(10) NOT NULL,
     pais VARCHAR(100) NOT NULL,
     fNac DATE NOT NULL,
-    nivel INT NOT NULL
+    nivel INT NOT NULL,
+    intocable INT NOT NULL DEFAULT 0,
+    CONSTRAINT max_user_level CHECK (nivel < 5),
+    CONSTRAINT intocable_bool CHECK (intocable = 1 OR intocable = 0)
 );
 
 CREATE TABLE Comentario(
