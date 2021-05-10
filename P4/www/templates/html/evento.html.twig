@@ -1,20 +1,25 @@
 {% extends "/html/base.html.twig" %}
 
 {% block title %}
-- {{event.titulo|capitalize}}
+- {{event.titulo|title}}
 {% endblock %}
 
 {% block head %}
 {% if event.titulo|capitalize == "Playstation" or event.titulo|capitalize == "Xbox" %}
     <link rel="stylesheet" href={{"templates/css/#{event.titulo|lower}.css"}} />
 {% else %}
-    <link rel="stylesheet" href={{"templates/css/evento.css"}} />
+    <link rel="stylesheet" href="templates/css/evento.css" />
 {% endif %}
 <script src="templates/scripts/comments.js" defer></script>
 {% endblock %}
 
 {% block main %}
 <article id="eventText">
+    {% if user.nivel >= 3 %}
+    <a class="material-icons" title="Delete" id="removeEvIcon" href={{"editEvento.php?idEv=#{event.DB_idEv}&rmv"}}>delete</a>
+    <a class="material-icons" title="Edit" id="editEvIcon" href={{"editEvento.php?idEv=#{event.DB_idEv}"}}>edit</a>
+    <a class="material-icons" title="Add Image" id="addImgIcon" href={{"addImgEvento.php?idEv=#{event.DB_idEv}"}}>add_photo_alternate</a>
+    {% endif %}
     <header>
         <h1>{{event.titulo|title}} Press Conference</h1>
         <h2>{{event.organizador|title}}</h2>
@@ -22,7 +27,7 @@
     </header>
     <div>
         {% for textImg in textImgs %}
-        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" class="galeria"/></a>
+        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" class="galeria"/></a>{% if user.nivel >= 3 %}<a class="material-icons" title="Remove Image" id="removeImgIcon" href={{"deleteImagen.php?id=#{textImg.DB_idIm}&idEv=#{event.DB_idEv}"}}>highlight_off</a>{% endif %}
         {% endfor %}
     </div>
     <p>

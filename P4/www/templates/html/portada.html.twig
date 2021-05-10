@@ -11,6 +11,11 @@
         <a href={{img.href}}><img src={{img.src}} alt={{img.alt}} id="{{img.id}}" class="imagenPortada" /></a>
     </div>
     {% endfor %}
+    {% if user.nivel >= 3 %}
+    <div class="evento">
+        <a href="addEvento.php"><img src="templates/images/addEvent-icon.png" alt="Add Event" id="addIcon" title="Add Event"/></a>
+    </div>
+    {% endif %}
     <!--
     <div class="evento">
         <a href="https://www.devolverdigital.com/"><img src="templates/images/devolver-logo.png" alt="Logo Devolver Digital" id="Devolver"/></a>

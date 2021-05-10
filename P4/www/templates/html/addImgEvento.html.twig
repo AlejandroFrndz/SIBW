@@ -1,0 +1,17 @@
+{% extends "html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/registro.css" />
+{% endblock %}
+
+{% block main %}
+    <form action={{"addImgEvento.php?idEv=#{idEv}"}} method="post" enctype="multipart/form-data">
+        <label for="imagen">Image:</label><p class="error">  {{errores.imagen}}</p><br><br>
+        <input type="file" id="imagen" name="imagen"/><br><br>
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn" onclick="location.href='index.php'">Cancel</button>
+            <button type="submit" class="signupbtn">Upload</button>
+        </div>
+    </form>
+{% endblock %}

@@ -171,6 +171,31 @@ aside img{
     color: white;
 }
 
+#removeEvIcon{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.5,1.5);
+    margin-right: 10px;
+}
+
+#editEvIcon{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.5,1.5);
+    margin-right: 10px;
+}
+
+#addImgIcon{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.5,1.5);
+}
+
+#removeImgIcon{
+    color: white;
+    text-decoration: none;
+}
+
 .galeria{
     width: 100%;
 }

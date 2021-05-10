@@ -32,8 +32,17 @@ class BD{
 
     }
 
+    public function getFechaSinFormato($idEv){
+        $stmt = $this->$con->prepare("SELECT fecha FROM Evento WHERE DB_idEv = ?");
+        $stmt->bind_param("i",$idEv);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $fecha = $res->fetch_assoc();
+        return $fecha['fecha'];
+    }
+
     public function getImagenesEvento($idEv){
-        $stmt = $this->$con->prepare("SELECT id,href,src,alt FROM Imagen NATURAL JOIN ImagenEvento WHERE DB_idEv = ?");
+        $stmt = $this->$con->prepare("SELECT id,href,src,alt,DB_idIm FROM Imagen NATURAL JOIN ImagenEvento WHERE DB_idEv = ?");
         $stmt->bind_param("i",$idEv);
         $stmt->execute();
         $res = $stmt->get_result();
@@ -57,10 +66,81 @@ class BD{
         return $id;
     }
 
+    public function updateEvento($evento){
+        $stmt = $this->$con->prepare("UPDATE Evento SET titulo = ?, href = ?, organizador = ?, fecha = ?, descripcion = ? WHERE DB_idEv = ?");
+        $stmt->bind_param("sssssi", $evento['titulo'], $evento['href'], $evento['organizador'], $evento['fecha'], $evento['descripcion'], $evento['id']);
+        $stmt->execute();
+    }
+
+    public function deleteEvento($idEv){
+        //Guardamos la imagen de la portada del evento para eliminarla posteriormente de la tabla Imagen
+        $stmt1 = $this->$con->prepare("SELECT imagenPortada FROM Evento WHERE DB_idEv = ?");
+        $stmt1->bind_param("i",$idEv);
+        $stmt1->execute();
+        $res = $stmt1->get_result();
+        $idImgPortada = $res->fetch_assoc();
+        $idImgPortada = $idImgPortada['imagenPortada'];
+
+        //Lo mismo con las imagenes del cuerpo del evento
+        $stmt2 = $this->$con->prepare("SELECT DB_idIm FROM ImagenEvento WHERE DB_idEv = ?");
+        $stmt2->bind_param("i",$idEv);
+        $stmt2->execute();
+        $res = $stmt2->get_result();
+        $idImgsCuerpo = $res->fetch_all(MYSQLI_ASSOC);
+
+        //Borramos los comentarios del evento
+        $stmt3 = $this->$con->prepare("DELETE FROM Comentario WHERE DB_idEv = ?");
+        $stmt3->bind_param("i",$idEv);
+        $stmt3->execute();
+
+        //Borramos la asociacion del evento y sus imagenes del cuerpo
+        $stmt4 = $this->$con->prepare("DELETE FROM ImagenEvento WHERE DB_idEv = ?");
+        $stmt4->bind_param("i",$idEv);
+        $stmt4->execute();
+
+        //Borramos el evento en si
+        $stmt5 = $this->$con->prepare("DELETE FROM Evento WHERE DB_idEv = ?");
+        $stmt5->bind_param("i",$idEv);
+        $stmt5->execute();
+
+        //Y usando los ids guardados previamente, borramos las imágenes de su tabla y del servidor
+        $res = $this->$con->query("SELECT src FROM Imagen WHERE DB_idIm=".$idImgPortada);
+        $path = $res->fetch_assoc();
+        unlink($_SERVER['DOCUMENT_ROOT']."/".$path['src']);
+        $this->$con->query("DELETE FROM Imagen WHERE DB_idIm=".$idImgPortada);
+
+        foreach($idImgsCuerpo as $imgCuerpo){
+            $sql = "SELECT src FROM Imagen WHERE DB_idIm=".$imgCuerpo['DB_idIm'];
+            $res = $this->$con->query($sql);
+            $path = $res->fetch_assoc();
+            unlink($_SERVER['DOCUMENT_ROOT']."/".$path['src']);
+            $sql = "DELETE FROM Imagen WHERE DB_idIm=".$imgCuerpo['DB_idIm'];
+            $this->$con->query($sql);
+        }
+    }
+
     public function addImagenAEvento($img,$ev){
         $stmt = $this->$con->prepare("INSERT INTO ImagenEvento VALUES (?,?)");
         $stmt->bind_param("ii",$ev,$img);
         $stmt->execute();
+    }
+
+    public function deleteImagen($id){
+        $stmt = $this->$con->prepare("SELECT src FROM Imagen WHERE DB_idIm = ?");
+        $stmt->bind_param("i",$id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $path = $res->fetch_assoc();
+
+        $stmt2 = $this->$con->prepare("DELETE FROM ImagenEvento WHERE DB_idIm = ?");
+        $stmt2->bind_param("i",$id);
+        $stmt2->execute();
+
+        $stmt3 = $this->$con->prepare("DELETE FROM Imagen WHERE DB_idIm = ?");
+        $stmt3->bind_param("i",$id);
+        $stmt3->execute();
+
+        unlink($_SERVER['DOCUMENT_ROOT']."/".$path['src']);
     }
 
     public function getAllComentarios(){
@@ -112,6 +192,29 @@ class BD{
         $stmt = $this->$con->prepare("UPDATE Imagen SET href = ? WHERE DB_idIm = ?");
         $stmt->bind_param("si",$href,$id);
         $stmt->execute();
+    }
+
+    public function updateImagenPortada($imagen,$idEv){
+        $stmt = $this->$con->prepare("SELECT DB_idIm,src FROM Imagen JOIN Evento ON imagenPortada = DB_idIm WHERE DB_idEv = ?");
+        $stmt->bind_param("i",$idEv);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $oldImg = $res->fetch_assoc();
+
+        $stmt2 = $this->$con->prepare("INSERT INTO Imagen(href,src,alt) VALUES (?,?,?)");
+        $stmt2->bind_param("sss",$imagen['href'],$imagen['src'],$imagen['alt']);
+        $stmt2->execute();
+        
+        $res = $this->$con->query("SELECT MAX(DB_idIM)max FROM Imagen");
+        $idNew = $res->fetch_assoc();
+        $idNew = $idNew['max'];
+
+        $stmt3 = $this->$con->prepare("UPDATE Evento SET imagenPortada = ? WHERE DB_idEv = ?");
+        $stmt3->bind_param("ii",$idNew,$idEv);
+        $stmt3->execute();
+
+        $this->$con->query("DELETE FROM Imagen WHERE DB_idIm=".$oldImg['DB_idIm']);
+        unlink($_SERVER['DOCUMENT_ROOT'].$oldImg['src']);
     }
 
     public function getAllUsuarios(){

@@ -1,0 +1,22 @@
+{% extends "html/datosEventoBase.html.twig" %}
+
+{% block action %}"editEvento.php?idEv={{idEv}}"{% endblock %}
+
+{% block titulo %}value="{{evento.titulo|title}}"{% endblock %}
+
+{% block organizador %}value="{{evento.organizador|title}}"{% endblock %}
+
+{% block href %}value="{{evento.href}}"{% endblock %}
+
+{% block date %}value="{{evento.date}}"{% endblock %}
+
+{% block time %}value="{{evento.time}}"{% endblock %}
+
+{% block descripcion %}{{evento.descripcion}}{% endblock %}
+
+{% block imagenes %}
+    <label for="imagenPortada">Main Page Image:</label><p class="error">  {{errores.imagenPortada}}</p><br>
+    <input type="file" id="imagenPortada" name="imagenPortada"/><br><br>
+{% endblock %}
+
+{% block textoBoton %}Update{% endblock %}
