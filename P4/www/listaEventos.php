@@ -13,9 +13,17 @@
 
         if($user['nivel'] >= 3){
             $bd = new BD();
-            $events = $bd->getAllEventos();
+            if(empty($_GET['tag'])){
+                $activeTag = "";
+                $events = $bd->getAllEventos();
+            }
+            else{
+                $activeTag = $_GET['tag'];
+                $events = $bd->getEventosByEtiqueta($activeTag);
+            }
+            $tags = $bd->getAllEtiquetas();
 
-            echo $twig->render('/html/listaEventos.html.twig',['events' => $events, 'user' => $user]);
+            echo $twig->render('/html/listaEventos.html.twig',['events' => $events, 'user' => $user, 'tags' => $tags, 'activeTag' => $activeTag]);
         }
         else{
             echo "<h1>403 FORBIDDEN</h1>";

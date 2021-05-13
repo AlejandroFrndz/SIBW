@@ -14,3 +14,8 @@ li a:hover{
 li{
     padding: 0.5%;
 }
+
+.active{
+    font-weight: bolder;
+    background-color: #ff6d28;
+}

@@ -72,8 +72,8 @@
 {% endblock %}
 
 {% block asideElements %}
-<a href={{"https://www.facebook.com/#{event.titulo|lower}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
-<a href={{"https://twitter.com/#{event.titulo|lower}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
-<a href={{"https://www.instagram.com/#{event.titulo|lower}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
+<a href={{"https://www.facebook.com/#{event.titulo|lower|replace({' ' : ''})}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
+<a href={{"https://twitter.com/#{event.titulo|lower|replace({' ' : ''})}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
+<a href={{"https://www.instagram.com/#{event.titulo|lower|replace({' ' : ''})}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
 <a href={{"imprimir.php?ev=#{event.DB_idEv}"}}><img src="templates/images/print-logo.png" alt="Print" /></a>
 {% endblock %}

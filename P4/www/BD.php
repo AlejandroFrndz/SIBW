@@ -57,6 +57,16 @@ class BD{
         return $events;
     }
 
+    public function getEventosByEtiqueta($tag){
+        $stmt = $this->$con->prepare("SELECT E.DB_idEv,E.titulo FROM Evento E NATURAL JOIN Etiqueta T WHERE T.etiqueta = ?");
+        $stmt->bind_param("s",$tag);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $eventos = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $eventos;
+    }
+
     public function addEvento($evento){
         $stmt = $this->$con->prepare("INSERT INTO Evento(titulo,href,organizador,fecha,descripcion,imagenPortada) VALUES (?,?,?,?,?,?)");
         $stmt->bind_param("ssssss",$evento['titulo'],$evento['href'],$evento['organizador'],$evento['fecha'],$evento['descripcion'],$evento['imagenPortada']);
@@ -98,10 +108,15 @@ class BD{
         $stmt4->bind_param("i",$idEv);
         $stmt4->execute();
 
-        //Borramos el evento en si
-        $stmt5 = $this->$con->prepare("DELETE FROM Evento WHERE DB_idEv = ?");
+        //Borramos la asociación entre el evento y sus etiquetas
+        $stmt5 = $this->$con->prepare("DELETE FROM Etiqueta WHERE DB_idEv = ?");
         $stmt5->bind_param("i",$idEv);
         $stmt5->execute();
+
+        //Borramos el evento en si
+        $stmt6 = $this->$con->prepare("DELETE FROM Evento WHERE DB_idEv = ?");
+        $stmt6->bind_param("i",$idEv);
+        $stmt6->execute();
 
         //Y usando los ids guardados previamente, borramos las imágenes de su tabla y del servidor
         $res = $this->$con->query("SELECT src FROM Imagen WHERE DB_idIm=".$idImgPortada);
@@ -146,6 +161,17 @@ class BD{
     public function getAllComentarios(){
         $res = $this->$con->query("SELECT C.DB_idCo, C.uname, C.fecha, C.cuerpo, E.titulo, E.DB_idEv FROM Comentario C JOIN Evento E ON C.DB_idEv = E.DB_idEv ORDER BY E.DB_idEv ASC, C.fecha ASC;");
         $comentarios = $res->fetch_all(MYSQLI_ASSOC);
+        return $comentarios;
+    }
+
+    public function getComentariosByAutor($autor){
+        $pattern = $autor . "%";
+        $stmt = $this->$con->prepare("SELECT C.DB_idCo, C.uname, C.fecha, C.cuerpo, E.titulo, E.DB_idEv FROM Comentario C JOIN Evento E ON C.DB_idEv = E.DB_idEv WHERE C.uname LIKE ? ORDER BY E.DB_idEv ASC, C.fecha ASC;");
+        $stmt->bind_param("s",$pattern);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $comentarios = $res->fetch_all(MYSQLI_ASSOC);
+
         return $comentarios;
     }
 
@@ -300,6 +326,35 @@ class BD{
         $stmt = $this->$con->prepare("DELETE FROM Comentario WHERE DB_idCo = ?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
+    }
+
+    public function addEtiquetas($tags,$idEv){
+        foreach($tags as $tag){
+            $stmt = $this->$con->prepare("INSERT INTO Etiqueta VALUES(?,?)");
+            $stmt->bind_param("si",$tag,$idEv);
+            $stmt->execute();
+        }
+    }
+
+    public function deleteEtiqueta($tag,$idEv){
+        $stmt = $this->$con->prepare("DELETE FROM Etiqueta WHERE etiqueta = ? AND DB_idEv = ?");
+        $stmt->bind_param("si",$tag,$idEv);
+        $stmt->execute();
+    }
+
+    public function getEtiquetas($idEv){
+        $stmt = $this->$con->prepare("SELECT etiqueta FROM Etiqueta WHERE DB_idEv = ?");
+        $stmt->bind_param("i",$idEv);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $tags = $res->fetch_all(MYSQLI_ASSOC);
+        return $tags;
+    }
+
+    public function getAllEtiquetas(){
+        $res = $this->$con->query("SELECT DISTINCT etiqueta FROM Etiqueta");
+        $tags = $res->fetch_all(MYSQLI_ASSOC);
+        return $tags;
     }
 
 }

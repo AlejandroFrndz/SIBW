@@ -13,9 +13,20 @@
 
         if($user['nivel'] >= 2){
             $bd = new BD();
-            $comments = $bd->getAllComentarios();
 
-            echo $twig->render('/html/listaComentarios.html.twig',['comments' => $comments, 'user' => $user]);
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                if(isset($_POST['autor'])){
+                    $autor = $_POST['autor'];
+
+                    $comments = $bd->getComentariosByAutor($autor);
+                }
+            }
+            else{
+                $autor = "";
+                $comments = $bd->getAllComentarios();
+            }
+
+            echo $twig->render('/html/listaComentarios.html.twig',['comments' => $comments, 'user' => $user, 'filtro' => $autor]);
         }
         else{
             echo "<h1>403 FORBIDDEN</h1>";

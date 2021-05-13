@@ -27,6 +27,7 @@
         $pieces = explode(" ",$evento['fecha']);
         $evento['date'] = $pieces[0];
         $evento['time'] = $pieces[1];
+        $tags = $bd->getEtiquetas($idEv);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $required = array('titulo', 'href', 'organizador','descripcion');
@@ -78,10 +79,17 @@
             $modified['fecha'] = $_POST['date'] . " " . $_POST['time'];
             $modified['descripcion'] = $_POST['descripcion'];
             $bd->updateEvento($modified);
+
+            if(!empty($_POST['etiquetas'])){
+                $stringTags = $_POST['etiquetas'];
+                $tags = explode(",",$stringTags);
+                $bd->addEtiquetas($tags,$idEv);
+            }
+            
             header("Location: evento.php?ev=".$idEv);
             exit();
         }
-        echo $twig->render('/html/editEvento.html.twig', ['user' => $user, 'evento' => $evento, 'idEv' => $idEv]);
+        echo $twig->render('/html/editEvento.html.twig', ['user' => $user, 'evento' => $evento, 'idEv' => $idEv, 'tags' => $tags]);
     }
     else{
         echo "<h1>403 FORBIDDEN</h1>";

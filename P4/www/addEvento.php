@@ -83,6 +83,13 @@
                     }
                 }
 
+                if(!empty($_POST['etiquetas'])){
+                    $stringTags = $_POST['etiquetas'];
+                    $tags = explode(",",$stringTags);
+
+                    $bd->addEtiquetas($tags,$idEv);
+                }
+
                 header("Location: index.php");
                 
                 

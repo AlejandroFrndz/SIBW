@@ -1,6 +1,7 @@
 {% extends "html/base.html.twig" %}
 
 {% block head %}
+<link rel="stylesheet" href="templates/css/editEvento.css" />
 <link rel="stylesheet" href="templates/css/listaEventos.css" />
 {% endblock %}
 
@@ -11,4 +12,15 @@
                 <li><a title="Go to event" href={{"evento.php?ev=#{event.DB_idEv}"}}>{{event.titulo|capitalize}}</a></li>
         {% endfor %}
     </ul>
+
+    <p>Filter by Tag:</p>
+        <div id="tags">
+            {% for tag in tags %}
+                {% if tag.etiqueta == activeTag %}
+                    <a class="tag active" href="listaEventos.php">{{tag.etiqueta|capitalize}}</a>
+                {% else %}
+                    <a class="tag" href={{"listaEventos.php?tag=#{tag.etiqueta}"}}>{{tag.etiqueta|capitalize}}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
 {% endblock %}

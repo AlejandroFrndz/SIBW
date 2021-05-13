@@ -6,6 +6,14 @@
 
 {% block main %}
     <h1>Comment List</h1>
+
+    <form action="listaComentarios.php" method="post">
+        <label for="autor">Filter by Author</label><br>
+        <input type="text" id="autor" name="autor" value="{{filtro}}"/>
+        <button type="submit" class="filterBtn">Filter</button>
+        <button type="button" class="clearBtn" onclick="location.href='listaComentarios.php'">Clear Filter</button>
+    </form>
+
     {% for comment in comments %}
         <section class="postedComment">
             <a class="material-icons" title="Delete" id="removeIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{comment.DB_idEv}&rmv"}}>remove_circle</a>
@@ -17,4 +25,5 @@
             <p class="commentBody">{{comment.cuerpo}}</p>
         </section>
     {% endfor %}
+
 {% endblock %}
