@@ -10,7 +10,7 @@
     $idEv = $_GET['ev'];
     $event = $db->getEvento($idEv);
     if(empty($event)){
-        echo $twig->render('/html/notFound.html.twig',[]);
+        echo $twig->render('/html/error.html.twig',['error' => "404 NOT FOUND"]);
     }
     else{
         $textImgs = $db->getImagenesEvento($idEv);

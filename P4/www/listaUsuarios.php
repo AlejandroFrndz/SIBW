@@ -20,6 +20,6 @@
         }
     }
     else{
-        echo "<h1>403 FORBIDDEN</h1>";
+        echo $twig->render('/html/error.html.twig',['error' => "403 FORBIDDEN"]);
     }
 ?>

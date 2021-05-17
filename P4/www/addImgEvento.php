@@ -47,6 +47,6 @@
         echo $twig->render('/html/addImgEvento.html.twig',["idEv" => $idEv]);
     }
     else{
-        echo "<h1>403 FORBIDDEN</h1>";
+        echo $twig->render('/html/error.html.twig',['error' => "403 FORBIDDEN"]);
     }
 ?>

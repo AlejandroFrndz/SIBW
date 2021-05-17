@@ -92,6 +92,6 @@
         echo $twig->render('/html/editEvento.html.twig', ['user' => $user, 'evento' => $evento, 'idEv' => $idEv, 'tags' => $tags]);
     }
     else{
-        echo "<h1>403 FORBIDDEN</h1>";
+        echo $twig->render('/html/error.html.twig',['error' => "403 FORBIDDEN"]);
     }
 ?>

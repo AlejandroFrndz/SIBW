@@ -1,4 +1,9 @@
 <?php
+    require_once "/usr/local/lib/php/vendor/autoload.php";
+
+    $loader = new \Twig\Loader\FilesystemLoader('templates');
+    $twig = new \Twig\Environment($loader);
+
     include("BD.php");
 
     session_start();
@@ -16,12 +21,12 @@
             exit();
         }
         else{
-            echo "<h1>403 FORBIDDEN</h1>";
+            echo $twig->render('/html/error.html.twig',['error' => "403 FORBIDDEN"]);
             exit();
         }
     }
     else{
-        echo "<h1>403 FORBIDDEN</h1>";
+        echo $twig->render('/html/error.html.twig',['error' => "403 FORBIDDEN"]);
         exit();
     }
 ?>

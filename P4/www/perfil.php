@@ -71,6 +71,6 @@
         exit();
     }
     
-    echo $twig->render('/html/notFound.html.twig',[]);
+    echo $twig->render('/html/error.html.twig',['error' => "404 NOT FOUND"]);
 
 ?>

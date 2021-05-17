@@ -1,4 +1,8 @@
 <?php
+    require_once "/usr/local/lib/php/vendor/autoload.php";
+
+    $loader = new \Twig\Loader\FilesystemLoader('templates');
+    $twig = new \Twig\Environment($loader);
     session_start();
     $user;
 
@@ -6,11 +10,6 @@
         $user = $_SESSION['user'];
 
         if($user['nivel'] >= 3){
-            require_once "/usr/local/lib/php/vendor/autoload.php";
-
-            $loader = new \Twig\Loader\FilesystemLoader('templates');
-            $twig = new \Twig\Environment($loader);
-
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $required = array('titulo', 'href', 'organizador','descripcion');
 
@@ -101,5 +100,5 @@
         }
     }
 
-    echo "<h1>403 FORBIDDEN</h1>";
+    echo $twig->render('/html/error.html.twig',['error' => "403 FORBIDDEN"]);
 ?>
