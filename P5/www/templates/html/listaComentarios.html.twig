@@ -1,0 +1,29 @@
+{% extends "html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/listaComentarios.css" />
+{% endblock %}
+
+{% block main %}
+    <h1>Comment List</h1>
+
+    <form action="listaComentarios.php" method="post">
+        <label for="autor">Filter by Author</label><br>
+        <input type="text" id="autor" name="autor" value="{{filtro}}"/>
+        <button type="submit" class="filterBtn">Filter</button>
+        <button type="button" class="clearBtn" onclick="location.href='listaComentarios.php'">Clear Filter</button>
+    </form>
+
+    {% for comment in comments %}
+        <section class="postedComment">
+            <a class="material-icons" title="Delete" id="removeIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{comment.DB_idEv}&rmv"}}>remove_circle</a>
+            <a class="material-icons" title="Edit" id="editIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{comment.DB_idEv}"}}>edit</a>
+            <a class="material-icons" title="Go to event" id="goToIcon" href={{"evento.php?ev=#{comment.DB_idEv}"}}>last_page</a>
+            <p><i>Event:</i> {{comment.titulo}}</p>
+            <p>{{comment.uname}}</p>
+            <p>{{comment.fecha}}</p>
+            <p class="commentBody">{{comment.cuerpo}}</p>
+        </section>
+    {% endfor %}
+
+{% endblock %}

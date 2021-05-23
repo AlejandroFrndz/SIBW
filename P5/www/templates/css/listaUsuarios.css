@@ -1,0 +1,53 @@
+.four, .fourNH{
+    color: goldenrod;
+}
+
+.three, .threeNH{
+    color: darkmagenta;
+}
+
+.two, .twoNH{
+    color: darkblue;
+}
+
+.one{
+    color: darkgreen;
+}
+
+.four:hover, .three:hover, .two:hover{
+    color: rgba(128, 128, 128, 0.5);
+}
+
+.four, .three, .two, .one{
+    text-decoration: none;
+}
+
+.inactive4, .inactive3, .inactive2{
+    color: grey;
+    text-decoration: none;
+}
+
+.inactive4:hover{
+    color: rgba(218, 165, 32, 0.8);
+}
+
+.inactive3:hover{
+    color: rgba(139, 0, 139, 0.8);
+}
+
+.inactive2:hover{
+    color: rgba(0, 0, 139, 0.8);
+}
+
+.userElement{
+    padding: 15px;
+    font-size: 1.2em;
+}
+
+#usersBtn p a{
+    color: black;
+}
+
+#intocable{
+    color: darkred;
+}

@@ -1,0 +1,29 @@
+{% extends "html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/listaUsuarios.css" />
+{% endblock %}
+
+{% block main %}
+    <h1>User List</h1>
+    <ul id="usersList">
+        {% for usuario in usuarios %}
+        <li class="userElement">
+            {% if not usuario.intocable == 1 %}
+                {{usuario.uname|capitalize}} 
+                <a {% if usuario.nivel >= 4 %} class="material-icons-round four" href={{"cambiarRol.php?uname=#{usuario.uname}&lvl=3"}} title="Revoke SuperUser status" {% else %} class="material-icons-round inactive4" href={{"cambiarRol.php?uname=#{usuario.uname}&lvl=4"}} title="Promote to SuperUser" {% endif %}>looks_4</a> 
+                <a {% if usuario.nivel >= 3 %} class="material-icons-round three" href={{"cambiarRol.php?uname=#{usuario.uname}&lvl=2"}} title="Revoke Manager status" {% else %} class="material-icons-round inactive3" href={{"cambiarRol.php?uname=#{usuario.uname}&lvl=3"}} title="Promote to Manager" {% endif %}>looks_3</a> 
+                <a {% if usuario.nivel >= 2 %} class="material-icons-round two" href={{"cambiarRol.php?uname=#{usuario.uname}&lvl=1"}} title="Revoke Moderator status"{% else %} class="material-icons-round inactive2" href={{"cambiarRol.php?uname=#{usuario.uname}&lvl=2"}} title="Promote to Moderator" {% endif %}>looks_two</a> 
+                <span class="material-icons-round one" title="User status">looks_one</span>
+            {% else %}
+                {{usuario.uname|capitalize}}
+                <span class="material-icons-round" id="intocable" title="This user cannot be modified">military_tech</span>
+                <span class="material-icons-round fourNH" title="SuperUser status">looks_4</span>
+                <span class="material-icons-round threeNH" title="Manager status">looks_3</span>
+                <span class="material-icons-round twoNH" title="Moderator status">looks_two</span>
+                <span class="material-icons-round one" title="User status">looks_one</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

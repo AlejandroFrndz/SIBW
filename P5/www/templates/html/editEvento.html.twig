@@ -1,0 +1,39 @@
+{% extends "html/datosEventoBase.html.twig" %}
+
+{% block head %}
+{{ parent() }}
+<link rel="stylesheet" href="templates/css/editEvento.css" />
+{% endblock %}
+
+{% block action %}"editEvento.php?idEv={{idEv}}"{% endblock %}
+
+{% block titulo %}value="{{evento.titulo|title}}"{% endblock %}
+
+{% block organizador %}value="{{evento.organizador|title}}"{% endblock %}
+
+{% block href %}value="{{evento.href}}"{% endblock %}
+
+{% block date %}value="{{evento.date}}"{% endblock %}
+
+{% block time %}value="{{evento.time}}"{% endblock %}
+
+{% block descripcion %}{{evento.descripcion}}{% endblock %}
+
+{% block imagenes %}
+    <label for="imagenPortada">Main Page Image:</label><p class="error">  {{errores.imagenPortada}}</p><br>
+    <input type="file" id="imagenPortada" name="imagenPortada"/><br><br>
+{% endblock %}
+
+{% block tags %}
+    <p>Tags:</p>
+    <div id="tags">
+        {% for tag in tags %}
+            <p class="tag">{{tag.etiqueta|capitalize}} <a class="material-icons" title="Remove Tag" id="removeTagIcon" href={{"deleteEtiqueta.php?tag=#{tag.etiqueta}&idEv=#{idEv}"}}>clear</a></p>
+        {% endfor %}
+    </div>
+
+    <br><label for="etiquetas" id="labelEtiquetas">Add Tags (comma separated):</label><br>
+    <input type="text" id="etiquetas" name="etiquetas"/>
+{% endblock %}
+
+{% block textoBoton %}Update{% endblock %}

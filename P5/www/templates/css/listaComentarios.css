@@ -1,0 +1,37 @@
+#removeIcon{
+    color: darkred;
+    margin: 10px 0px 5px 5px;
+}
+
+#editIcon{
+    color: darkgreen;
+    margin: 10px 0px 5px 5px;
+}
+
+#goToIcon{
+    color: darkblue;
+    transform: scale(1.35,1.35);
+    margin: 10px 5px 5px 5px;
+}
+
+.postedComment a{
+    text-decoration: none;
+}
+
+.postedComment{
+    border: 3px solid #f1f1f1;
+    border-radius: 6px;
+    background-color: #f1f1f1;
+    color: black;
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.postedComment p{
+    margin: 0.8% 1% 0.8% 1%;
+}
+
+#usersBtn p a{
+    color: black;
+}

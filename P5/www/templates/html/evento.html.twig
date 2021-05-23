@@ -1,0 +1,84 @@
+{% extends "/html/base.html.twig" %}
+
+{% block title %}
+- {{event.titulo|title}}
+{% endblock %}
+
+{% block head %}
+{% if event.titulo|capitalize == "Playstation" or event.titulo|capitalize == "Xbox" %}
+    <link rel="stylesheet" href={{"templates/css/#{event.titulo|lower}.css"}} />
+{% else %}
+    <link rel="stylesheet" href="templates/css/evento.css" />
+{% endif %}
+<script src="templates/scripts/comments.js" defer></script>
+{% endblock %}
+
+{% block main %}
+<article id="eventText">
+    {% if user.nivel >= 3 %}
+        <a class="material-icons icon scale" title="Delete" id="removeEvIcon" href={{"editEvento.php?idEv=#{event.DB_idEv}&rmv"}}>delete</a>
+        <a class="material-icons icon scale" title="Edit" id="editEvIcon" href={{"editEvento.php?idEv=#{event.DB_idEv}"}}>edit</a>
+        <a class="material-icons icon scale" title="Add Image" id="addImgIcon" href={{"addImgEvento.php?idEv=#{event.DB_idEv}"}}>add_photo_alternate</a>
+        {% if event.publicado == 1 %}
+            <a class="material-icons-outlined icon scale" title="Hide" id="hideIcon" href={{"publicarEvento.php?idEv=#{event.DB_idEv}&hide"}}>visibility</a>
+        {% else %}
+            <a class="material-icons-outlined icon scale" title="Publish" id="publishIcon" href={{"publicarEvento.php?idEv=#{event.DB_idEv}"}}>visibility_off</a>
+        {% endif %}
+    {% endif %}
+    <header>
+        <h1>{{event.titulo|title}} Press Conference</h1>
+        <h2>{{event.organizador|title}}</h2>
+        <h3>{{event.fecha}}</h3>
+    </header>
+    <div>
+        {% for textImg in textImgs %}
+        <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" class="galeria"/></a>{% if user.nivel >= 3 %}<a class="material-icons icon" title="Remove Image" id="removeImgIcon" href={{"deleteImagen.php?id=#{textImg.DB_idIm}&idEv=#{event.DB_idEv}"}}>highlight_off</a>{% endif %}
+        {% endfor %}
+    </div>
+    <p>
+        {{event.descripcion}}
+    </p>
+</article>
+
+{{ parent() }}
+
+<button type="button" id="showButton" class="toggleBtn">Show Comments</button>
+
+<!--Comentarios-->
+<div id="commentSection">
+    <article id="feed">
+        <!--Comentarios Predeterminados-->
+        {% for comment in comments %}
+        <section class="postedComment">
+            {% if user.nivel >= 2 %}
+            <a class="material-icons icon" title="Delete" id="removeIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}&rmv"}}>remove_circle</a>
+            <a class="material-icons icon" title="Edit" id="editIcon" href={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{event.DB_idEv}"}}>edit</a>
+            {% endif %}
+            <p>{{comment.uname}}</p>
+            <p>{{comment.fecha}}</p>
+            <p class="commentBody">{{comment.cuerpo}}</p>
+        </section>
+        {% endfor %}
+    </article>
+
+    <!--Form para la introducción de nuevos comentarios-->
+    <div id="palabrasProhibidas" data-palabras-prohibidas="{{palabras|json_encode|e('html_attr')}}"></div>
+    {% if user.nivel > 0 %}
+    <form id="commentInput" action={{"evento.php?ev=#{event.DB_idEv}"}} method="post">
+        <textarea id="comment" name="comment" class="formElements" placeholder="Type your comment here..."></textarea>
+        <button type="submit" id="postButton">Post Comment</button> 
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block asideList %}
+<a href={{event.href}}><li>Visit {{event.titulo|capitalize}}'s Website</li></a>
+{% endblock %}
+
+{% block asideElements %}
+<a href={{"https://www.facebook.com/#{event.titulo|lower|replace({' ' : ''})}/"}}><img src="templates/images/facebook-logo.png" alt="Facebook Logo" /></a>
+<a href={{"https://twitter.com/#{event.titulo|lower|replace({' ' : ''})}"}}><img src="templates/images/twitter-logo.png" alt="Twitter Logo" /></a>
+<a href={{"https://www.instagram.com/#{event.titulo|lower|replace({' ' : ''})}/"}}><img src="templates/images/instagram-logo.png" alt="Instagram Logo" /></a>
+<a href={{"imprimir.php?ev=#{event.DB_idEv}"}}><img src="templates/images/print-logo.png" alt="Print" /></a>
+{% endblock %}

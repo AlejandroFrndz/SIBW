@@ -1,0 +1,17 @@
+{% extends "html/datosEventoBase.html.twig" %}
+
+{% block action %}"addEvento.php"{% endblock %}
+
+{% block imagenes %}
+    <label for="imagenPortada">Main Page Image:</label><p class="error">  {{errores.imagenPortada}}</p><br>
+    <input type="file" id="imagenPortada" name="imagenPortada"/><br><br>
+    <label for="imagen">Image:</label><p class="error">  {{errores.imagen}}</p><br>
+    <input type="file" id="imagen" name="imagen"/>
+{% endblock %}
+
+{% block tags %}
+    <br><br><label for="etiquetas">Tags (comma separated):</label>
+    <input type="text" id="etiquetas" name="etiquetas"/><br>
+{% endblock %}
+
+{% block textoBoton %}Create{% endblock %}

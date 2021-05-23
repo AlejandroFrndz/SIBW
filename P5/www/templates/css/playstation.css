@@ -1,0 +1,186 @@
+/* Estilos para la descripción de un evento concreto*/
+body{
+    background-image: url("../images/playstation-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;  
+}
+
+#eventText{
+    width: 88%;
+    display: inline-block;
+    margin-right: 1%;
+}
+
+#eventText p{
+    font-size: 0.8em;
+    font-family:"Press Start 2P", sans-serif;
+    line-height: 25px;
+    text-indent: 50px;
+}
+
+#eventText div{
+    float: right;
+    width: 15%;
+    margin-left: 0.5%;
+}
+
+#eventText header{
+    font-family: "DotGothic16", sans-serif;
+}
+
+img:hover{
+    transform: scale(1.1);
+}
+
+#santa-monica-logo{
+    width: 100%;
+    margin-top: 15%;
+}
+
+#naughty-dog-logo{
+    width: 80%;
+}
+
+aside a{
+    text-decoration: none;
+    color: white;
+}
+
+aside img{
+    margin-top: 5%;
+    width: 20%;
+}
+
+#comment{
+    width: 60%;
+    height: 236px;
+    resize: none;
+    display: block;
+}
+
+.formElements{
+    margin-bottom: 0.5%;
+    margin-right: 0.5%;
+}
+
+.postedComment{
+    border: 3px solid white;
+    border-radius: 6px;
+    background-color: #031e49;
+    color: white;
+    width: 80%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.postedComment p{
+    margin: 0.8% 1% 0.8% 1%;
+}
+
+.commentBody{
+    line-height: 25px;
+}
+
+#commentSection{
+    margin-left: 182px;
+    font-family: sans-serif;
+    display: none;
+}
+
+#commentInput input{
+    background-color: #031e49;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+
+#commentInput textarea{
+    background-color: #031e49;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 0.5%;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 1em;
+}
+
+#commentSection button{
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #031e49;
+    border-radius: 6px;
+    font-family:"Press Start 2P", sans-serif;
+}
+
+  
+#commentSection button:hover {
+    background-color: #031e49;
+    color: white;
+}
+
+.toggleBtn{
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #031e49;
+    color: white; 
+    border: 1px solid white;
+    margin-left: 85%;
+    border-radius: 6px;
+    font-family:"Press Start 2P", sans-serif;
+}
+
+.toggleBtn:hover{
+    transform: scale(1.1);
+}
+
+#name{
+    width: 200px;
+    padding: 0.4%;
+}
+
+#email{
+    width: 300px;
+    padding: 0.4%;
+}
+
+#invalidEmail{
+    display: inline;
+    font-family: sans-serif;
+    color: #C20606;
+}
+
+.postedComment a{
+    text-decoration: none;
+}
+
+.icon{
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.scale{
+    transform: scale(1.5,1.5);
+}
+
+#removeIcon{
+    margin: 5px 5px 5px 5px;
+}

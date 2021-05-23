@@ -1,0 +1,21 @@
+#usersBtn p a{
+    color: black;
+}
+
+li a{
+    color: darkblue;
+    text-decoration: none;
+}
+
+li a:hover{
+    text-decoration: underline;
+}
+
+li{
+    padding: 0.5%;
+}
+
+.active{
+    font-weight: bolder;
+    background-color: #ff6d28;
+}

@@ -1,0 +1,68 @@
+{% extends "html/datosBase.html.twig" %}
+
+{% block tituloSeccion %}<h1>{{user.uname|capitalize}}'s Profile</h1>{% endblock %}
+
+{% block main %}
+    <div id="actions">
+        {% if user.nivel >= 4 %}
+            <h2>Super User Actions</h2>
+            <ul>
+                <li><a href="listaUsuarios.php">Users List</a></li>
+            </ul>
+        {% endif %}
+
+        {% if user.nivel >= 3 %}
+            <h2>Manager Actions</h2>
+            <ul>
+                <li><a href="listaEventos.php">Event List</a></li>
+            </ul>
+        {% endif %}
+
+        {% if user.nivel >= 2 %}
+            <h2>Moderator Actions</h2>
+            <ul>
+                <li><a href="listaComentarios.php">See all comments</a></li>
+            </ul>
+        {% endif %}
+    </div>
+
+    {{ parent() }}
+{% endblock %}
+
+{% block action %}"perfil.php"{% endblock %}
+
+{% block uname %} value="{{user.uname|capitalize}}" disabled{% endblock %}
+
+{% block email %}value="{{user.email}}"{% endblock %}
+
+{% block fname %}value="{{user.nombre}}"{% endblock %}
+
+{% block sname %}value="{{user.apellido}}"{% endblock %}
+
+{% block city %}value="{{user.direccion}}"{% endblock %}
+
+{% block male %}
+    {% if user.sexo == "Male" %}
+        checked="checked"
+    {% endif %}
+{% endblock %}
+
+{% block female %}
+    {% if user.sexo == "Female" %}
+        checked="checked"
+    {% endif %}
+{% endblock %}
+
+{% block other %}
+    {% if user.sexo == "Other" %}
+        checked="checked"
+    {% endif %}
+{% endblock %}
+
+{% block country %}
+<option value="{{user.pais}}">{{user.pais}}</option>
+{% endblock %}
+
+{% block bday %}"{{user.fNac}}"{% endblock %}
+
+{% block textBoton %}Update{% endblock %}

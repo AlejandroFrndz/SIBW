@@ -1,0 +1,108 @@
+input[type=text], input[type=password], input[type=url] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=radio], input[type=date], #country{
+  margin: 5px 0 22px 0;
+}
+
+textarea{
+  border: none;
+  padding: 0.5%;
+  font-size: 1em;
+  width: 98%;
+  height: 236px;
+  resize: none;
+  display: block;
+  background: #f1f1f1;
+  line-height: 20px;
+}
+
+
+/* Set a style for all buttons */
+form button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+form button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.pie img{
+  filter: none;
+}
+
+.error{
+  display: inline;
+  color: darkred;
+}
+
+#pgender{
+  display: inline;
+}
+
+#usersBtn{
+  visibility: hidden;
+}
+
+#actions{
+  margin-bottom: 40px;
+}
+
+#actions a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+#actions a:link {
+  color: #020d9e;
+}
+
+#actions a:visited {
+  color: #020d9e;
+}
+
+#actions a:hover {
+  border-bottom: 1px solid;
+}
+
+#actions a:active {
+  color: #010653;
+}

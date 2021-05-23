@@ -1,0 +1,21 @@
+{% extends "/html/base.html.twig" %}
+
+{% block head %}
+<link rel="stylesheet" href="templates/css/editComentario.css" />
+{% endblock %}
+
+{% block main %}
+    <h1>Editing Comment</h1>
+    <p><strong>Author:</strong> <i>{{comment.uname}}</i></p>
+    <p><strong>Date:</strong> <i>{{comment.fecha}}</i></p>
+    <form action={{"editComentario.php?id=#{comment.DB_idCo}&idEv=#{idEv}"}} method="post">
+        <textarea id="cuerpo" name="cuerpo">
+            {{comment.cuerpo}}
+        </textarea>
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn" onclick={{"location.href='evento.php?ev=#{idEv}'"}}>Cancel</button>
+            <button type="submit" class="confirmbtn">Confirm</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "/html/base.html.twig" %}
+
+{% block head %} 
+<link rel="stylesheet" href="templates/css/portada.css" />
+{% endblock %}
+
+{% block main %}
+<section class="eventsGrid">
+    {% for img in imgs %}
+    <div class="evento">
+        <a href={{img.href}}><img src={{img.src}} alt={{img.alt}} id="{{img.id}}"  {% if img.publicado == 0 and user.nivel >= 3 %}class="imagenPortada transparent" {% elseif img.publicado == 0 and user.nivel <= 3 %} class="imagenPortada invisible" {% else %} class="imagenPortada" {% endif %} /></a>
+    </div>
+    {% endfor %}
+    {% if user.nivel >= 3 %}
+    <div class="evento">
+        <a href="addEvento.php"><img src="templates/images/addEvent-icon.png" alt="Add Event" id="addIcon" title="Add Event"/></a>
+    </div>
+    {% endif %}
+</section>
+
+{{ parent() }}
+{% endblock %}
