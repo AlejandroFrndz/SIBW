@@ -179,3 +179,12 @@ aside img{
 .galeria{
     width: 100%;
 }
+
+#cadenaBusqueda{
+    display: none;
+}
+
+em{
+    background-color: #38d878;
+    padding: 3px;
+}

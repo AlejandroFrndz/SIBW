@@ -53,6 +53,8 @@
             $palabras[] = $palabra['palabra'];
         }
 
-        echo $twig->render('/html/evento.html.twig',['event' => $event, 'textImgs' => $textImgs, 'comments' => $comments, 'user' => $user, 'palabras' => $palabras]);
+        $cadena = $_GET['cadena'];
+
+        echo $twig->render('/html/evento.html.twig',['event' => $event, 'textImgs' => $textImgs, 'comments' => $comments, 'user' => $user, 'palabras' => $palabras, 'cadena' => $cadena]);
     }
 ?>

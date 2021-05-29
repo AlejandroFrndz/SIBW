@@ -189,3 +189,12 @@ aside img{
 #removeIcon{
     margin: 5px 5px 5px 5px;
 }
+
+#cadenaBusqueda{
+    display: none;
+}
+
+em{
+    background-color: #38d878;
+    padding: 3px;
+}

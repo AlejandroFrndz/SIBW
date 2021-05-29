@@ -2,6 +2,15 @@
 
 {% block head %} 
 <link rel="stylesheet" href="templates/css/portada.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="templates/scripts/busqueda.js" defer></script>
+{% endblock %}
+
+{% block searchBar %}
+<form>
+    <input id="searchBar" type="text" placeholder="Search"/>
+    <ul id="results"></ul>
+</form>
 {% endblock %}
 
 {% block main %}

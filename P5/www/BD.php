@@ -88,6 +88,23 @@ class BD{
         $stmt->execute();
     }
 
+    public function buscarEventos($str,$manager){
+        if($manager){
+            $sql = "SELECT DB_idEv,titulo FROM Evento WHERE (titulo LIKE ? OR descripcion LIKE ?)";
+        }
+        else{
+            $sql = "SELECT DB_idEv,titulo FROM Evento WHERE (publicado = 1 AND (titulo LIKE ? OR descripcion LIKE ?))";
+        }
+        $str = "%".$str."%";
+        $stmt = $this->$con->prepare($sql);
+        $stmt->bind_param("ss",$str,$str);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
     public function deleteEvento($idEv){
         //Guardamos la imagen de la portada del evento para eliminarla posteriormente de la tabla Imagen
         $stmt1 = $this->$con->prepare("SELECT imagenPortada FROM Evento WHERE DB_idEv = ?");

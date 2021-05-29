@@ -10,7 +10,9 @@
 {% else %}
     <link rel="stylesheet" href="templates/css/evento.css" />
 {% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="templates/scripts/comments.js" defer></script>
+<script src="templates/scripts/resaltarBusqueda.js" defer></script>
 {% endblock %}
 
 {% block main %}
@@ -35,7 +37,7 @@
         <a href={{textImg.href}}><img src={{textImg.src}} alt={{textImg.alt}} id="{{textImg.id}}" class="galeria"/></a>{% if user.nivel >= 3 %}<a class="material-icons icon" title="Remove Image" id="removeImgIcon" href={{"deleteImagen.php?id=#{textImg.DB_idIm}&idEv=#{event.DB_idEv}"}}>highlight_off</a>{% endif %}
         {% endfor %}
     </div>
-    <p>
+    <p id="eventBody">
         {{event.descripcion}}
     </p>
 </article>
@@ -70,6 +72,8 @@
     </form>
     {% endif %}
 </div>
+
+<div id="cadenaBusqueda">{{cadena}}</div>
 {% endblock %}
 
 {% block asideList %}
